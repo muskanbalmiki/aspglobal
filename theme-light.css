@@ -1,0 +1,129 @@
+/* ===== theme-light.css · light corporate look + bold geometric font (Outfit) =====
+   Imported LAST (after typography.css). Delete this one import in src.jsx to go back to the dark version. */
+:root{--ink:#0f1a3d;--muted:#55607f;--soft:#f4f6fb;--line:#e4e8f3;--blue:#162ea6;--green:#00b050;
+font-family:'Outfit','Century Gothic',CenturyGothic,'Trebuchet MS',sans-serif;color:var(--ink);background:#fff}
+body{background:#fff;color:var(--ink);font-weight:400}
+
+/* type: bold geometric */
+h1,h2{font-weight:700;color:var(--ink)}
+h1{letter-spacing:-.035em;line-height:1.04}
+h2{letter-spacing:-.03em}
+h3{font-weight:600}
+h2 span{color:var(--blue)}
+.lead{color:var(--ink);font-weight:500}
+.eyebrow,.hero .eyebrow{color:var(--blue);font-weight:600}
+.eyebrow span{background:var(--green)}
+nav a{font-weight:500}
+.button,.nav-cta,.hero-secondary,.text-link{font-weight:600}
+.about-copy p:not(.lead),p{color:var(--muted)}
+.about-copy p:not(.lead){color:var(--muted)}
+
+/* header */
+header{background:rgba(255,255,255,.92);color:var(--ink);border-bottom:1px solid var(--line)}
+nav a:hover{color:var(--blue)}
+nav a:after{background:var(--green)}
+.nav-cta{color:var(--blue);border:1.5px solid var(--blue);border-radius:999px;font-weight:600}
+.nav-cta:hover{background:var(--blue);color:#fff}
+.brand img{width:auto;height:46px}
+
+/* buttons */
+.button{border-radius:999px}
+.green{box-shadow:0 10px 26px rgba(0,176,80,.28)}
+.blue{box-shadow:0 10px 26px rgba(22,46,166,.25)}
+
+/* hero */
+.hero{background:#fff;color:var(--ink)}
+.hero-photo{border-radius:0}
+.shade{background:linear-gradient(90deg,#fff 24%,rgba(255,255,255,.93) 38%,rgba(255,255,255,.08) 78%),linear-gradient(0deg,#fff 0%,transparent 34%)}
+.hero h1{color:var(--ink)}
+.hero h1 em{background:linear-gradient(90deg,#162ea6,#00b050,#162ea6);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted)}
+.hero-secondary{color:var(--blue)}
+.hero-coordinate{color:var(--ink)}
+.hero-coordinate span{color:var(--muted)}
+.hero-bottom{color:var(--muted);border-top:1px solid var(--line)}
+.hero-bottom a{color:var(--ink);font-weight:600}
+.dots button{background:#c8d0e6}
+.dots button.on{background:var(--blue)}
+
+/* strip */
+.trade-strip{background:var(--soft);border-color:var(--line);color:#3b4766;font-weight:500}
+.trade-strip svg{color:var(--blue)}
+.trade-strip i{background:var(--line)}
+
+/* about */
+.about-visual>img{border-radius:22px}
+.about-visual:after{border-radius:22px}
+.about-visual>div{color:#fff}
+.about-float{border:6px solid #fff;border-radius:16px;box-shadow:0 24px 50px rgba(15,26,61,.25)}
+.about-float img{border-radius:10px}
+.text-link{color:var(--blue);border-bottom:1.5px solid #c5cff3}
+
+/* verticals */
+.verticals{background:var(--soft)}
+.verticals .eyebrow{color:var(--blue)}
+.verticals h2 span{color:var(--blue)}
+.section-head p{color:var(--muted)}
+.sector{border-radius:20px}
+.sector:hover{box-shadow:0 26px 50px rgba(15,26,61,.22)}
+.sector.active{outline:3px solid var(--green);outline-offset:4px}
+.sector-name h3{font-weight:600;color:#fff}
+.product-panel{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 20px 50px rgba(15,26,61,.08)}
+.product-panel h3{color:var(--ink);font-weight:600}
+.product-panel p{color:var(--muted)}
+.product-panel li{color:#34406a;font-weight:500}
+.product-panel .eyebrow{color:var(--green)}
+.panel-bg{opacity:.1}
+
+/* approach */
+.approach{background:#fff;color:var(--ink)}
+.approach:before{display:none}
+.approach-top .eyebrow{color:var(--blue)}
+.approach-top>p{color:var(--muted)}
+.principles>div{border-top:3px solid var(--line);padding-top:26px}
+.principles>div:hover{border-top-color:var(--green)}
+.principles span{color:var(--green);font-weight:700}
+.principles h3{color:var(--ink)}
+.principles p{color:var(--muted)}
+
+/* band: the one deep-blue photo moment */
+.band:after{background:linear-gradient(90deg,#0b1a5e 12%,rgba(11,26,94,.86) 50%,rgba(11,26,94,.35))}
+.band h2{color:#fff}
+.band h2 span{color:#6df0a8}
+.band p{color:#d3dcf5}
+.band .eyebrow{color:#6df0a8}
+.route text{fill:#cdd8f5}
+
+/* process */
+.process{background:#fff;border-bottom:1px solid var(--line)}
+.process .eyebrow{color:var(--blue)}
+.steps b{background:#eef2ff;color:var(--blue);border:1px solid #d6defa;border-radius:50%;font-weight:600}
+.steps:before{background:linear-gradient(#162ea6,transparent)}
+.steps h3{color:var(--ink)}
+.steps p{color:var(--muted)}
+
+/* contact */
+.contact{background:var(--soft);color:var(--ink)}
+.contact .eyebrow{color:var(--blue)}
+.contact h2 span{color:var(--blue)}
+.contact p{color:var(--muted)}
+.contact-details,.contact-details a,.contact-details div{color:var(--ink)}
+.contact-details svg{color:var(--blue)}
+.contact .text-link{color:var(--blue);border-color:#c5cff3}
+.contact form{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 20px 50px rgba(15,26,61,.08)}
+.contact form h3{color:var(--ink)}
+label{color:#34406a}
+input,select,textarea{border:1.5px solid var(--line);border-radius:10px;color:var(--ink)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(22,46,166,.12)}
+form small{color:#7b86a4}
+
+/* footer */
+footer{background:#fff;border-top:1px solid var(--line);color:var(--muted)}
+footer a{color:var(--blue);font-weight:600}
+
+@media(max-width:560px){
+ .shade{background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(255,255,255,.72) 62%,#fff)}
+ .hero-photo{opacity:.5}
+ .menu{color:var(--blue)}
+ nav{background:#fff;color:var(--ink);box-shadow:0 14px 30px rgba(15,26,61,.14)}
+}

@@ -1,0 +1,128 @@
+/* ===== Floating contact (fixed, bottom-left) · compact ===== */
+.fc{position:fixed;left:20px;bottom:20px;z-index:999;font-family:inherit}
+
+/* ---------- round button (64px) ---------- */
+.fc-btn{position:relative;display:block;width:64px;height:64px;padding:0;margin:0;border:0;border-radius:50%;background:none;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.fc-btn:focus{outline:none}
+.fc-btn:focus-visible .fc-main{box-shadow:0 0 0 3px #fff,0 0 0 5px #0b8a47}
+
+/* blue circle behind */
+.fc-blue{position:absolute;left:-7px;bottom:-7px;width:38px;height:38px;border-radius:50%;background:#0b4ea2;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.fc-btn:hover .fc-blue{transform:translate(-4px,4px) scale(1.1)}
+
+/* green main circle */
+.fc-main{position:absolute;inset:0;border-radius:50%;background:#0b8a47;color:#fff;
+ box-shadow:0 0 0 5px rgba(11,138,71,.30),0 10px 22px rgba(0,50,25,.38);
+ transition:transform .4s cubic-bezier(.2,.8,.2,1),background .35s,box-shadow .35s}
+.fc-btn:hover .fc-main{transform:translateY(-3px) scale(1.06);box-shadow:0 0 0 8px rgba(11,138,71,.26),0 14px 26px rgba(0,50,25,.42)}
+.fc-btn:active .fc-main{transform:scale(.95)}
+.fc.is-open .fc-main{background:#00793b;transform:scale(.9);box-shadow:0 0 0 0 transparent,0 10px 22px rgba(0,50,25,.38)}
+.fc.is-open .fc-btn:hover .fc-main{transform:scale(.95)}
+
+/* faces */
+.fc-face{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;
+ transition:opacity .3s,transform .45s cubic-bezier(.2,.8,.2,1)}
+.fc-closed svg{width:22px;height:22px}
+.fc-closed b{font-size:9.5px;line-height:1.05;font-weight:700;text-align:center}
+.fc-x svg{width:22px;height:22px}
+.fc-x{opacity:0;transform:rotate(-90deg) scale(.5)}
+.fc.is-open .fc-closed{opacity:0;transform:rotate(90deg) scale(.5)}
+.fc.is-open .fc-x{opacity:1;transform:none}
+
+/* pulsing dot */
+.fc-dot{position:absolute;top:1px;right:1px;width:11px;height:11px;border-radius:50%;background:#4cd137}
+.fc-dot:after{content:'';position:absolute;inset:0;border-radius:50%;background:#4cd137;animation:fcPulse 2s ease-out infinite}
+@keyframes fcPulse{from{transform:scale(1);opacity:.7}to{transform:scale(2.4);opacity:0}}
+
+/* ---------- popup menu (compact, opens upwards) ---------- */
+.fc-menu{position:absolute;left:0;bottom:78px;width:210px;padding:6px;background:#fff;border-radius:12px;
+ box-shadow:0 14px 36px rgba(0,0,0,.3);transform-origin:bottom left;
+ opacity:0;visibility:hidden;pointer-events:none;transform:translateY(14px) scale(.94);
+ transition:opacity .28s,transform .4s cubic-bezier(.2,.8,.2,1),visibility 0s .4s}
+.fc.is-open .fc-menu{opacity:1;visibility:visible;pointer-events:auto;transform:none;transition-delay:0s}
+.fc-menu:after{content:'';position:absolute;left:24px;bottom:-6px;width:13px;height:13px;background:#fff;transform:rotate(45deg);border-radius:2px}
+
+/* rows */
+.fc-item{position:relative;display:flex;align-items:center;gap:11px;width:100%;padding:6px 8px;border:0;background:none;border-radius:9px;
+ font:inherit;font-size:14.5px;line-height:1.2;color:#4a4a4a;text-align:left;text-decoration:none;cursor:pointer;
+ opacity:0;transform:translateY(10px);
+ transition:opacity .3s,transform .4s cubic-bezier(.2,.8,.2,1),background .25s,color .25s}
+.fc.is-open .fc-item{opacity:1;transform:none;transition-delay:calc(var(--i) * 60ms + 80ms),calc(var(--i) * 60ms + 80ms),0s,0s}
+.fc-item:hover,.fc-item:focus-visible{background:#f1f5f3;color:#0b8a47;outline:none}
+.fc.is-open .fc-item:hover{transition-delay:0s}
+.fc-label{transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.fc-item:hover .fc-label{transform:translateX(4px)}
+
+/* icons */
+.fc-ico{flex:none;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:#fff;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
+.fc-ico svg{width:18px;height:18px}
+.fc-item:hover .fc-ico{transform:scale(1.1) rotate(-6deg);box-shadow:0 6px 14px rgba(0,0,0,.25)}
+.fc-orange{background:#ff6b3b}
+.fc-green{background:#52b82b}
+.fc-dark{background:#000}
+
+/* ---------- mobile ---------- */
+@media(max-width:560px){
+ .fc{left:14px;bottom:14px}
+ .fc-btn{width:58px;height:58px}
+ .fc-closed b{font-size:9px}
+ .fc-menu{width:200px;bottom:72px}
+ .fc-item{font-size:14px}
+}
+/* ===== Email Request popup form ===== */
+.fm{position:absolute;left:0;bottom:78px;width:min(340px,calc(100vw - 28px));background:#fff;border-radius:12px;box-shadow:0 18px 50px rgba(0,0,0,.35);transform-origin:bottom left;
+ opacity:0;visibility:hidden;pointer-events:none;transform:translateY(16px) scale(.94);
+ transition:opacity .28s,transform .4s cubic-bezier(.2,.8,.2,1),visibility 0s .4s}
+.fc.form-open .fm{opacity:1;visibility:visible;pointer-events:auto;transform:none;transition-delay:0s}
+/* pointer arrow */
+.fm:after{content:'';position:absolute;left:24px;bottom:-6px;width:13px;height:13px;background:#fff;transform:rotate(45deg);border-radius:2px}
+
+.fm-head{padding:15px 20px;background:#008a4b;color:#fff;font-size:17px;text-align:center;border-radius:12px 12px 0 0}
+
+/* round close button, top-right corner */
+.fm-close{position:absolute;top:-14px;right:-8px;z-index:2;width:34px;height:34px;display:grid;place-items:center;border:0;border-radius:50%;background:#008a4b;color:#fff;cursor:pointer;box-shadow:0 6px 14px rgba(0,60,30,.35);transition:transform .35s cubic-bezier(.2,.8,.2,1),background .25s}
+.fm-close:hover{transform:rotate(90deg) scale(1.08);background:#00753f}
+
+.fm-body{padding:16px 20px 20px;display:grid;gap:13px;max-height:calc(100vh - 220px);overflow-y:auto}
+.fm-body label{display:grid;gap:6px;margin:0;font-size:14px;font-weight:400;color:#2d3340}
+.fm-body label>span i{font-style:normal;color:#d6204a;margin-left:2px}
+.fm-body input:not([type=checkbox]),.fm-body textarea{width:100%;margin:0;padding:10px 12px;border:1px solid #d9dde5;border-radius:6px;font:inherit;font-size:14px;color:#2d3340;background:#fff;transition:border-color .25s,box-shadow .25s}
+.fm-body textarea{resize:vertical;min-height:90px}
+.fm-body input::placeholder,.fm-body textarea::placeholder{color:#9097a5}
+.fm-body input:not([type=checkbox]):focus,.fm-body textarea:focus{outline:none;border-color:#008a4b;box-shadow:0 0 0 3px rgba(0,138,75,.15)}
+
+.fm-body .fm-policy{display:flex;align-items:center;gap:9px;cursor:pointer}
+.fm-policy input{width:18px;height:18px;margin:0;accent-color:#008a4b;cursor:pointer}
+
+.fm-send{width:100%;padding:12px;border:0;border-radius:6px;background:#008a4b;color:#fff;font:inherit;font-size:15px;cursor:pointer;transition:background .25s,transform .25s,box-shadow .25s}
+.fm-send:hover{background:#00753f;transform:translateY(-2px);box-shadow:0 8px 18px rgba(0,100,50,.3)}
+.fm-send:active{transform:none}
+.fm-note{margin:0;font-size:12.5px;line-height:1.5;color:#00753f;text-align:center}
+
+@media(max-width:560px){
+ .fm{bottom:72px}
+ .fm-body{padding:14px 16px 18px}
+}
+@media(prefers-reduced-motion:reduce){.fm,.fm-close,.fm-send{transition:none}}
+
+/* ===== fixes ===== */
+
+/* menu is hidden whenever the form is open (this was the overlap) */
+.fc.form-open .fc-menu{opacity:0;visibility:hidden;pointer-events:none;transform:translateY(14px) scale(.94);transition-delay:0s,0s,.4s}
+
+/* form: no scrollbar on normal screens, scrolls only on very short screens */
+.fm-body{max-height:calc(100vh - 200px);gap:11px}
+.fm-body textarea{min-height:70px}
+
+/* close button stays inside the screen on phones */
+@media(max-width:560px){.fm-close{right:4px;top:-16px}}
+
+/* WeChat ID box inside the menu */
+.fc-wechat{margin:2px 8px 4px 55px;padding:7px 10px;border-radius:8px;background:#f1f5f3;display:grid;gap:1px;animation:fcWe .3s both}
+.fc-wechat small{font-size:11px;color:#6b7a73}
+.fc-wechat b{font-size:14px;color:#0b8a47;font-weight:600;word-break:break-all;user-select:all}
+@keyframes fcWe{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+
+@media(prefers-reduced-motion:reduce){
+ .fc *,.fc *:after{animation:none!important;transition:none!important}
+}

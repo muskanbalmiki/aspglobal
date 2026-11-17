@@ -1,0 +1,70 @@
+/* ===== WhatsApp floating chat (fixed, bottom-right) ===== */
+.wa{position:fixed;right:22px;bottom:22px;z-index:998;display:flex;align-items:center;justify-content:flex-end;gap:12px;font-family:inherit}
+
+/* ---------- round button ---------- */
+.wa-btn{position:relative;flex:none;width:62px;height:62px;padding:0;border:0;border-radius:50%;background:#2db742;color:#fff;cursor:pointer;
+ box-shadow:0 10px 24px rgba(0,70,25,.35);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .3s,background .3s;-webkit-tap-highlight-color:transparent}
+.wa-btn:hover{transform:translateY(-3px) scale(1.07);box-shadow:0 14px 30px rgba(0,70,25,.42)}
+.wa-btn:active{transform:scale(.95)}
+.wa-btn:focus{outline:none}
+.wa-btn:focus-visible{box-shadow:0 0 0 3px #fff,0 0 0 5px #2db742}
+/* soft pulse ring when closed */
+.wa-btn:before{content:'';position:absolute;inset:0;border-radius:50%;background:#2db742;z-index:-1;animation:waPulse 2.4s ease-out infinite}
+.wa.is-open .wa-btn:before{animation:none;opacity:0}
+@keyframes waPulse{from{transform:scale(1);opacity:.55}to{transform:scale(1.7);opacity:0}}
+
+.wa.is-open .wa-btn{background:#2db742;width:56px;height:56px}
+
+/* two faces: WhatsApp logo <-> X */
+.wa-face{position:absolute;inset:0;display:grid;place-items:center;transition:opacity .3s,transform .45s cubic-bezier(.2,.8,.2,1)}
+.wa-x{opacity:0;transform:rotate(-90deg) scale(.5)}
+.wa.is-open .wa-closed{opacity:0;transform:rotate(90deg) scale(.5)}
+.wa.is-open .wa-x{opacity:1;transform:none}
+
+/* ---------- "Need Help? Chat with us" pill ---------- */
+.wa-pill{order:-1;padding:12px 18px;background:#f6f7f9;color:#4a4f5c;font-size:15px;border-radius:8px;box-shadow:0 8px 22px rgba(0,0,0,.22);white-space:nowrap;
+ transition:opacity .3s,transform .4s cubic-bezier(.2,.8,.2,1)}
+.wa-pill b{color:#1c2230;font-weight:700}
+.wa.is-open .wa-pill{opacity:0;transform:translateX(14px);pointer-events:none}
+
+/* ---------- popup card (opens upwards) ---------- */
+.wa-card{position:absolute;right:0;bottom:76px;width:min(340px,calc(100vw - 32px));background:#fff;border-radius:10px;overflow:hidden;
+ box-shadow:0 18px 50px rgba(0,0,0,.35);transform-origin:bottom right;
+ opacity:0;visibility:hidden;pointer-events:none;transform:translateY(16px) scale(.94);
+ transition:opacity .28s,transform .4s cubic-bezier(.2,.8,.2,1),visibility 0s .4s}
+.wa.is-open .wa-card{opacity:1;visibility:visible;pointer-events:auto;transform:none;transition-delay:0s}
+.wa.is-open{bottom:22px}
+
+.wa-head{display:flex;gap:14px;align-items:flex-start;padding:18px 20px;background:#2db742;color:#fff}
+.wa-head svg{flex:none}
+.wa-head h4{margin:0 0 4px;font-size:20px;line-height:1.2;font-weight:500;color:#fff}
+.wa-head p{margin:0;font-size:13px;line-height:1.45;color:#eaffee}
+.wa-head b{font-weight:700;color:#fff}
+
+.wa-body{padding:14px 16px 16px}
+.wa-note{margin:0 0 12px;font-size:12.5px;line-height:1.4;color:#9aa1b2}
+
+/* member row */
+.wa-member{display:flex;align-items:center;gap:14px;padding:10px 14px 10px 10px;margin-top:8px;background:#f4f6f8;border-left:3px solid #2db742;border-radius:6px;text-decoration:none;color:#3b4252;
+ opacity:0;transform:translateY(10px);
+ transition:opacity .3s,transform .4s cubic-bezier(.2,.8,.2,1),background .25s,box-shadow .25s}
+.wa.is-open .wa-member{opacity:1;transform:none;transition-delay:calc(var(--i) * 70ms + 120ms),calc(var(--i) * 70ms + 120ms),0s,0s}
+.wa-member:hover{background:#eaf7ed;box-shadow:0 6px 16px rgba(0,0,0,.1)}
+.wa.is-open .wa-member:hover{transition-delay:0s}
+
+.wa-avatar{flex:none;width:50px;height:50px;border-radius:50%;object-fit:cover;background:#cfd6e2}
+.wa-initials{display:grid;place-items:center;background:#162ea6;color:#fff;font-weight:600;font-size:16px}
+.wa-name{flex:1;font-size:16px;font-weight:500}
+.wa-go{flex:none;color:#2db742;display:grid;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.wa-member:hover .wa-go{transform:scale(1.18) rotate(-8deg)}
+
+/* ---------- mobile ---------- */
+@media(max-width:560px){
+ .wa{right:14px;bottom:14px}
+ .wa-btn{width:56px;height:56px}
+ .wa-pill{display:none}       /* the pill is hidden on small phones */
+ .wa-card{bottom:68px}
+}
+@media(prefers-reduced-motion:reduce){
+ .wa *,.wa *:before{animation:none!important;transition:none!important}
+}
